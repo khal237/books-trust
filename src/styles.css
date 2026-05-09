@@ -1,0 +1,135 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Pinyon+Script&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-rose-mist: var(--rose-mist);
+  --color-rose-pale: var(--rose-pale);
+  --color-rose-soft: var(--rose-soft);
+  --color-rose-deep: var(--rose-deep);
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-soft: var(--burgundy-soft);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+
+  --font-display: "Italiana", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --font-script: "Pinyon Script", cursive;
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --rose-mist: oklch(0.965 0.012 10);
+  --rose-pale: oklch(0.92 0.035 10);
+  --rose-soft: oklch(0.84 0.07 10);
+  --rose-deep: oklch(0.62 0.13 10);
+  --burgundy: oklch(0.32 0.085 15);
+  --burgundy-soft: oklch(0.42 0.09 15);
+  --gold: oklch(0.74 0.11 80);
+  --gold-light: oklch(0.84 0.10 85);
+  --cream: oklch(0.985 0.015 80);
+
+  --background: var(--cream);
+  --foreground: var(--burgundy);
+  --card: var(--cream);
+  --card-foreground: var(--burgundy);
+  --popover: var(--cream);
+  --popover-foreground: var(--burgundy);
+  --primary: var(--burgundy);
+  --primary-foreground: var(--cream);
+  --secondary: var(--rose-pale);
+  --secondary-foreground: var(--burgundy);
+  --muted: var(--rose-mist);
+  --muted-foreground: var(--burgundy-soft);
+  --accent: var(--gold);
+  --accent-foreground: var(--burgundy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.84 0.07 10 / 40%);
+  --input: oklch(0.84 0.07 10 / 40%);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-burgundy);
+    font-family: var(--font-body);
+    font-feature-settings: "liga", "dlig";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-body    { font-family: var(--font-body); }
+  .font-script  { font-family: var(--font-script); }
+
+  .text-overline {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 0.78rem;
+    color: var(--color-gold);
+  }
+
+  .bg-mesh {
+    background:
+      radial-gradient(circle at 15% 20%, oklch(0.92 0.05 15 / 0.9), transparent 55%),
+      radial-gradient(circle at 85% 30%, oklch(0.88 0.08 50 / 0.7), transparent 55%),
+      radial-gradient(circle at 50% 90%, oklch(0.86 0.06 20 / 0.7), transparent 60%),
+      linear-gradient(135deg, var(--color-rose-mist), var(--color-cream));
+  }
+
+  .paper-grain {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 180px 180px;
+  }
+
+  .gold-divider {
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
